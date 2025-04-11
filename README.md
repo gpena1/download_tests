@@ -1,0 +1,5 @@
+# Using this utility
+Make sure this script has the correct permissions before running as an executable. You will also need the directory where the repository is downloaded to stored in the variable `DOWNLOAD_TESTS_DIR`; you can create your own variables file and source this, or simply add it as a global environment variable.\
+Do be mindful of the fact that this script *will* try to execute with zsh as per the shebang. **Pull requests that modify the shebang will not be accepted.**
+# Supported Archives
+So far, the script only supports downloading test data from **Kattis** and **CSES**. Whenever you enter any archive names, please enter it in lowercase. If you would like to contribute code that supports other problem archives, make a pull request. Any auxiliary files which serve as aids should be titled with the name of that problem archive (e.g. in order to implement functionality for CSES, I wrote a python script titled `cses.py` to make my life easier).

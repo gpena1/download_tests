@@ -1,0 +1,28 @@
+#!/bin/zsh
+if [[ $# -ne 2 ]]; then
+	echo "Error: insufficient number of arguments supplied."
+	echo "Usage: download_samples <problem_archive> <problem_id>"
+	exit 1
+fi
+if [[ -d ./tests ]]; then
+	rm -rf ./tests
+fi
+
+archive=$1
+problem=$2
+case $archive in
+	"cses")
+		source $DOWNLOAD_TESTS_DIR/.venv/bin/activate
+		python $DOWNLOAD_TESTS_DIR/cses.py $problem
+		;;
+	"kattis")
+		curl -X GET "https://open.kattis.com/problems/$problem/file/statement/samples.zip" --output tests.zip
+		;;
+	*)
+		echo "Error: unknown problem archive. Make sure to supply a valid host."
+		exit 1
+		;;
+esac
+
+unzip -qq tests.zip -d tests
+rm tests.zip
