@@ -84,13 +84,7 @@ if 'application/zip' in content_type or 'application/octet-stream' in content_ty
     print(f"Successfully downloaded tests to {zip_filename}")
 
     file_size = os.path.getsize(zip_filename)
-    print(f"File size: {file_size} bytes")
-
-    if file_size < 100:  # Suspiciously small for a zip file
-        print("Warning: The downloaded file is very small. It might not be a valid zip file.")
-        with open(zip_filename, 'rb') as f:
-            content = f.read()
-        print(f"First 100 bytes: {content[:100]}")
+    print(f"File size: {file_size} bytes") 
 else:
     # Save the response content to debug
     with open("download_response.html", "wb") as f:
